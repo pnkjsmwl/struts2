@@ -1,0 +1,14 @@
+com\test\spring\contoller\UserController.class
+com\test\spring\model\Role.class
+com\test\spring\model\User.class
+com\test\spring\domain\user\LoginDomain.class
+com\test\spring\model\Product.class
+com\test\spring\domain\user\UserAction.class
+com\test\spring\repo\UserRepo.class
+com\test\spring\repo\UserServiceImpl.class
+com\test\spring\domain\user\ActionResult.class
+com\test\spring\domain\user\RegisterDomain.class
+com\test\spring\model\Cart.class
+com\test\spring\domain\user\ValidatorDomain.class
+com\test\spring\config\AppConfig.class
+com\test\spring\config\JPAConfigs.class

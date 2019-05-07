@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    
+    <!-- <package name="user" namespace="/User" extends="struts-default">
+        <interceptors>   
+            <interceptor name="authInterceptor" class="com.test.struts2.interceptor.AuthInterceptor" />
+            <interceptor-stack name="customStack">
+                <interceptor-ref name="authInterceptor"/>
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>      
+    </package>
+     
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="action," />
+    <constant name="struts.custom.i18n.resources" value="test" />
+    <constant name="struts.convention.default.parent.package" value="default"/> -->
+     
+</struts>

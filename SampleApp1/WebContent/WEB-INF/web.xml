@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>SampleApp</display-name>
+	<absolute-ordering />
+	<context-param>
+		<param-name>contextClass</param-name> <!-- to tell we are using annotation based configuration -->
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value> 
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name> <!-- to ensure all beans in this package are getting registered in spring container -->
+		<param-value>com.test</param-value> 
+	</context-param>
+	
+	<!-- Listeners are added to listen to a request and trigger a request accordingly -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	
+	<!-- Filters are added to intercept the incoming request and perform an action accordingly -->
+	<!-- Filters are used to perform filtering tasks such as login authentication ,auditing of incoming requests from web pages, 
+		conversion, logging, compression, encryption and decryption, input validation etc. -->
+	<filter>
+		<filter-name>DispatcherFilter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+		<init-param>
+			<param-name>actionPackages</param-name>
+			<param-value>com.test.struts2.action</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>DispatcherFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+</web-app>
