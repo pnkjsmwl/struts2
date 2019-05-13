@@ -21,6 +21,9 @@ public class Role {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	public Role(String selectedRole) {
+		role = selectedRole;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) 

@@ -18,7 +18,14 @@ import javax.persistence.Table;
 public class User {
 
 	User(){}
-	
+
+	public User(String name, String username, String password, Set<Role> roles) {
+		this.name = name;
+		this.username = username;
+		this.password = password;
+		this.roles = roles;
+	}
+
 	public User(String name, String username, String password) {
 		this.name = name;
 		this.username = username;
@@ -30,12 +37,31 @@ public class User {
 	private String name;
 	private String username;
 	private String password;
-	
-	
+
+
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL, orphanRemoval=true)
 	private Set<Role> roles = new HashSet<Role>();
+
 	@OneToOne(mappedBy="user",cascade=CascadeType.ALL, orphanRemoval=true)
 	private Cart cart;
+
+	public void addRole(Role role) {
+		roles.add(role);
+		role.setUser(this);
+	}
+	public void removeRole(Role role) {
+		roles.remove(role);
+		role.setUser(null);
+	}
+
+	public void addCart(Cart cart) {
+		this.cart = cart;
+		cart.setUser(this);
+	}
+	public void removeCart(Cart cart) {
+		this.cart = null;
+		cart.setUser(null);
+	}
 
 	public long getId() {
 		return id;

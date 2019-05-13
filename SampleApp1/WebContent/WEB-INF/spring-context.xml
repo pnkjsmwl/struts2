@@ -16,6 +16,9 @@
         http://www.springframework.org/schema/tx/ http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util/ http://www.springframework.org/schema/util/spring-util.xsd">
 
+	<bean id="productDomain"
+		class="com.test.struts2.domain.product.ProductDomain">
+	</bean>
 	<bean id="validatorDomain"
 		class="com.test.struts2.domain.user.ValidatorDomain">
 	</bean>

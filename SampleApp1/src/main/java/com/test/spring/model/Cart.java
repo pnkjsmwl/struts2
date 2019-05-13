@@ -1,9 +1,7 @@
 package com.test.spring.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,26 +17,26 @@ import javax.persistence.Table;
 public class Cart {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private Long id;
 
-	@OneToMany(mappedBy="cart",cascade=CascadeType.ALL, orphanRemoval=true)
-	private Set<Product> products = new HashSet<Product>();
-	
+	@OneToMany
+	private Set<Item> items;
+
 	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="user_id")
 	private User user;
-	
-	public long getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public Set<Product> getProducts() {
-		return products;
+	public Set<Item> getItems() {
+		return items;
 	}
-	public void setProducts(Set<Product> products) {
-		this.products = products;
+	public void setItems(Set<Item> items) {
+		this.items = items;
 	}
 	public User getUser() {
 		return user;

@@ -1,28 +1,41 @@
 package com.test.struts2.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.test.spring.model.Role;
 import com.test.spring.model.User;
 import com.test.spring.repo.UserServiceImpl;
 
-@Namespace(value="/User")
+@Namespace(value="/app/validation")
 public class RegisterAction {
+
+	public RegisterAction() {
+		roles = new ArrayList<String>();
+		roles.add("admin");roles.add("user");
+	}
 
 	@Autowired
 	private UserServiceImpl userServiceImpl;
 
 	@Action(value="register", results = {
-			@Result(name="success", location="/login.jsp"),
-			@Result(name="error", location="/register.jsp")})
-	public String execute() throws Exception {
+			@Result(name="success", location="/WEB-INF/content/app/validation/login.jsp"),
+			@Result(name="error", location="/WEB-INF/content/app/validation/register.jsp")})
+	public String register() throws Exception {
+		System.out.println("Register Action !!");
 
-		if(getName()!=null && getUsername()!=null && getPwd()!=null) {
+		if(getName()!=null && getUsername()!=null && getPwd()!=null && getSelectedRole()!=null) {
+			System.out.println("getSelectedRole() : "+getSelectedRole());
+			
 			User user = new User(getName(), getUsername(), getPwd());
-
+			user.addRole(new Role(getSelectedRole()));
+			
 			if(userServiceImpl.findByUsername(user.getUsername())==null) {
 				User added = userServiceImpl.add(user);
 				if(added!=null && added.getId()>0)
@@ -37,7 +50,9 @@ public class RegisterAction {
 	private String name;
 	private String username;
 	private String pwd;
-	
+	private List<String> roles;
+	private String selectedRole;
+
 	public String getName() {
 		return name;
 	}
@@ -56,7 +71,17 @@ public class RegisterAction {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-
-
+	public List<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+	public String getSelectedRole() {
+		return selectedRole;
+	}
+	public void setSelectedRole(String selectedRole) {
+		this.selectedRole = selectedRole;
+	}
 
 }

@@ -7,22 +7,25 @@
 	<absolute-ordering />
 	<context-param>
 		<param-name>contextClass</param-name> <!-- to tell we are using annotation based configuration -->
-		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value> 
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
 	</context-param>
 	<context-param>
-		<param-name>contextConfigLocation</param-name> <!-- to ensure all beans in this package are getting registered in spring container -->
-		<param-value>com.test</param-value> 
+		<param-name>contextConfigLocation</param-name> <!-- to ensure all beans in this package are getting registered in spring 
+			container -->
+		<param-value>com.test</param-value>
 	</context-param>
-	
+
 	<!-- Listeners are added to listen to a request and trigger a request accordingly -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
-	
-	<!-- Filters are added to intercept the incoming request and perform an action accordingly -->
-	<!-- Filters are used to perform filtering tasks such as login authentication ,auditing of incoming requests from web pages, 
-		conversion, logging, compression, encryption and decryption, input validation etc. -->
+
+
+	<!-- Filters are added to intercept the incoming request and perform an 
+		action accordingly -->
+	<!-- Filters are used to perform filtering tasks such as login authentication 
+		,auditing of incoming requests from web pages, conversion, logging, compression, 
+		encryption and decryption, input validation etc. -->
 	<filter>
 		<filter-name>DispatcherFilter</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -36,5 +39,7 @@
 		<filter-name>DispatcherFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/content/welcome.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>
